@@ -9,29 +9,32 @@
 
 function perfectShuffle(array) {
   console.log(array);
+  let deckSize = array.length;
   let halfDeck = [];
-  let cardNum = array.length;
-  for (let i=0;i<cardNum;i++)
-    {
-      if(i%2 === 0)
-      {
-        array.splice(i,1);
-        halfDeck.splice(i,1,array[i]);
-      }
-    }
-    console.log(halfDeck);
-  for (let j=0;j< cardNum;j++)
+  let splitNum = deckSize/2;
+  let i = 0;
+  while (i <= deckSize)
   {
-    if(j%2 !== 0)
+    if (i >= splitNum)
     {
-      for(let i;i<halfDeck.length;i++)
-      {
-      array.splice(j,1,halfDeck[i]);
-      }
+      halfDeck.push(array[i]);
+      array.splice(i,1);
     }
+
+  while (j <= array.length)
+  {
+    if (j%2 !== 0)
+    {
+      array.splice(j,1,halfDeck[i])
+    }
+    j++
   }
-  console.log(array);
+    i++
+  }
   return array;
+
+
+
 }
 
 let sanityCheck = require('./sanityCheck');
