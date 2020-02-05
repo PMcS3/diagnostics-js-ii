@@ -8,7 +8,30 @@
  */
 
 function perfectShuffle(array) {
-  // This is your job. :)
+  console.log(array);
+  let halfDeck = [];
+  let cardNum = array.length;
+  for (let i=0;i<cardNum;i++)
+    {
+      if(i%2 === 0)
+      {
+        array.splice(i,1);
+        halfDeck.splice(i,1,array[i]);
+      }
+    }
+    console.log(halfDeck);
+  for (let j=0;j< cardNum;j++)
+  {
+    if(j%2 !== 0)
+    {
+      for(let i;i<halfDeck.length;i++)
+      {
+      array.splice(j,1,halfDeck[i]);
+      }
+    }
+  }
+  console.log(array);
+  return array;
 }
 
 let sanityCheck = require('./sanityCheck');
